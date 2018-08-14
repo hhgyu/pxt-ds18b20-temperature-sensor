@@ -17,6 +17,19 @@
      */
 
 declare namespace ds18b20 {
+    /**
+     * initialises local variablesssss
+     */
+    //% blockId=probe_init
+    //% block="connect temperature probe to %pin" shim=DS18B20::init
+    function init(pin: Pins): void;
+
+    /**
+     * get temperature to 1 decimal place
+     */
+    //% blockId = get_temp
+    //% block="temperature" shim=DS18B20::get_temp
+    function get_temp(): number;
 }
 
 // Auto-generated. Do not edit. Really.
