@@ -41,13 +41,17 @@ namespace DS18B20 {
   }
   
   //%
-  float get_temp() {
+  int get_temp() {
     if (mOneWire == NULL)
-      return -1000;
+      return -999999;
   
     rom_address_t address;
     mOneWire->singleDeviceReadROM(address);
     mOneWire->convertTemperature(address, true, true); //Start temperature conversion, wait until ready
-    return mOneWire->temperature(address);
+	float temp = mOneWire->temperature(address);
+
+	if(temp == -1000)
+		return  -999999;
+	return temp * 100;
   }
 }

@@ -16,7 +16,23 @@
      * Distributed as-is; no warranty is given.
      */
 
-declare namespace ds18b20 {
+//% color=#f44242 icon="\u26C8"
+namespace ds18b20 {
+    /**
+     */
+    //% blockId="ds18b20_init" block="connect temperature probe to %pin" shim=DS18B20::init
+    //% shim=DS18B20::init
+    export function init(pin: Pins): void {
+
+    }
+
+    /**
+     */
+    //% weight=10 blockId="ds18b20_get_temp" block="temperature(C)"
+    //% shim=DS18B20::get_temp
+    export function get_temp(): number {
+	return 0;
+    }
 }
 
 // Auto-generated. Do not edit. Really.

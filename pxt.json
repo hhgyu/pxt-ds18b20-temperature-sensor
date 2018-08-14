@@ -9,6 +9,7 @@
     "files": [
         "README.md",
         "DS18B20.cpp",
+        "DS18B20.ts",
         "OneWire.cpp",
         "OneWire.h",
         "shims.d.ts",
