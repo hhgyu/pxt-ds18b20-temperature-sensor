@@ -1,0 +1,21 @@
+{
+    "name": "DS18B20",
+    "version": "0.0.12",
+    "description": "DS18B20 Temperature Sensor",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "DS18B20.cpp",
+        "OneWire.cpp",
+        "OneWire.h",
+        "shims.d.ts",
+        "enums.d.ts"
+    ],
+    "testFiles": [
+        "tests.ts"
+    ],
+    "public": true
+}
