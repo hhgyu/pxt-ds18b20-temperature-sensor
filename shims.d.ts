@@ -17,16 +17,17 @@
      */
 
 declare namespace ds18b20 {
+    /**
+     */
     //% blockId="ds18b20_init" block="connect temperature probe to %pin" shim=DS18B20::init
     //% shim=DS18B20::init
-    export function init(pin: Pins): void;
+    function init(pin: Pins): void;
 
+    /**
+     */
     //% weight=10 blockId="ds18b20_get_temp" block="temperature(C)"
     //% shim=DS18B20::get_temp
-    export function soilTemperature(): number {
-        // Fake function for simulator
-        return 0
-    }
+    function get_temp(): number;
 }
 
 // Auto-generated. Do not edit. Really.
