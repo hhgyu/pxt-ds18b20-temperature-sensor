@@ -17,19 +17,16 @@
      */
 
 declare namespace ds18b20 {
-    /**
-     * initialises local variablesssss
-     */
-    //% blockId=probe_init
-    //% block="connect temperature probe to %pin" shim=DS18B20::init
-    function init(pin: Pins): void;
+    //% blockId="ds18b20_init" block="connect temperature probe to %pin" shim=DS18B20::init
+    //% shim=DS18B20::init
+    export function init(pin: Pins): void;
 
-    /**
-     * get temperature to 1 decimal place
-     */
-    //% blockId = get_temp
-    //% block="temperature" shim=DS18B20::get_temp
-    function get_temp(): number;
+    //% weight=10 blockId="ds18b20_get_temp" block="temperature(C)"
+    //% shim=DS18B20::get_temp
+    export function soilTemperature(): number {
+        // Fake function for simulator
+        return 0
+    }
 }
 
 // Auto-generated. Do not edit. Really.

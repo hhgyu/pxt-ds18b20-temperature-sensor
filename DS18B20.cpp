@@ -29,8 +29,7 @@ enum class Pins {
 namespace DS18B20 {
   OneWire * mOneWire = NULL;
   
-  //% blockId=probe_init
-  //% block="connect temperature probe to %pin"
+  //%
   void init(Pins pin) {
     if (mOneWire != NULL) {
       delete mOneWire;
@@ -41,8 +40,7 @@ namespace DS18B20 {
     mOneWire->init();
   }
   
-  //% blockId = get_temp
-  //% block="temperature"
+  //%
   float get_temp() {
     if (mOneWire == NULL)
       return -1000;
