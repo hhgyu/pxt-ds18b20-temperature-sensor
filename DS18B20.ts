@@ -28,14 +28,14 @@ namespace ds18b20 {
 
     /**
      */
-    //% weight=10 blockId="ds18b20_get_temp" block="temperature(C)"
+    //% weight=10 blockId="ds18b20_get_temp" block="temperature(C) to %pin"
     //% shim=DS18B20::get_temp
     export function get_temp(pin: Pins): number {
 	return 0;
     }
     /**
      */
-    //% blockId="ds18b20_deinit" block="deinit temperature probe" shim=DS18B20::deinit
+    //% blockId="ds18b20_deinit" block="deinit temperature probe to %pin" shim=DS18B20::deinit
     //% shim=DS18B20::deinit
     export function deinit(pin: Pins): void {
 
