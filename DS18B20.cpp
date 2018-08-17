@@ -67,7 +67,7 @@ namespace DS18B20 {
 
         if(itFinded->second) {
           rom_address_t & address = oneWire->getAddress(0);
-          oneWire->convertTemperature(address, true, false); //Start temperature conversion, wait until ready
+          oneWire->convertTemperature(address, false, false); //Start temperature conversion, wait until ready
           float temp = oneWire->temperature(address);
 
           if(temp == -1000)
