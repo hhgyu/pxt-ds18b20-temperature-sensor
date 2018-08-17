@@ -1,6 +1,7 @@
 #include "pxt.h"
 
 #include "OneWire.h"
+#include <map>
 
 using namespace pxt;
 
@@ -27,31 +28,47 @@ enum class Pins {
 };
 
 namespace DS18B20 {
-  OneWire * mOneWire = NULL;
+  std::map<Pins, OneWire *> m;
   
   //%
   void init(Pins pin) {
-    if (mOneWire != NULL) {
-      delete mOneWire;
-    }
-  
-    mOneWire = new OneWire((PinName) pin);
-  
-    mOneWire->init();
+    OneWire * oneWire = new OneWire((PinName) pin);
+	auto it = m.find(pin);
+	if (it != m.end()) {
+	  delete it->second;
+      m[pin] = oneWire;
+	} else {
+      m.insert(std::make_pair(pin, oneWire));
+	}
+	
+    oneWire->init();
   }
   
   //%
-  int get_temp() {
-    if (mOneWire == NULL)
-      return -999999;
+  int get_temp(Pins pin) {
+	auto it = m.find(pin);
+	if (it != m.end()) {
+      OneWire * oneWire = it->second;
   
-    rom_address_t address;
-    mOneWire->singleDeviceReadROM(address);
-    mOneWire->convertTemperature(address, true, true); //Start temperature conversion, wait until ready
-	float temp = mOneWire->temperature(address);
+      rom_address_t address;
+      oneWire->singleDeviceReadROM(address);
+      oneWire->convertTemperature(address, true, true); //Start temperature conversion, wait until ready
+	  float temp = oneWire->temperature(address);
 
-	if(temp == -1000)
+	  if(temp == -1000)
 		return  -999999;
-	return temp * 100;
+	  return temp * 100;
+	}
+
+    return -999999;
+  }
+
+  //%
+  void deinit(Pins pin) {
+	auto it = m.find(pin);
+	if (it != m.end()) {
+	  delete it->second;
+	  m.erase(it);
+	}
   }
 }
