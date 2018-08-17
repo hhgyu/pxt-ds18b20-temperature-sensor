@@ -41,6 +41,8 @@
 
 #endif
 
+#include <vector>
+
 #define FAMILY_CODE address.rom[0]
 #define FAMILY_CODE_DS18S20 0x10 //9bit temp
 #define FAMILY_CODE_DS18B20 0x28 //9-12bit temp also known as MAX31820
@@ -168,6 +170,8 @@ public:
     static rom_address_t addressFromHex(const char *hexAddress);
 
 private:
+    std::vector<rom_address_t> found_addresses;
+
     DigitalInOut _datapin;
     DigitalOut _parasitepin;
     bool _parasite_power;

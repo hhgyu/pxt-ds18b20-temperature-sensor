@@ -1,6 +1,5 @@
 #include <cstdio>
 #include <cmath>
-#include <vector>
 #include <cstring>
 #include <cstdlib>
 #include "OneWire.h"
@@ -15,8 +14,6 @@
 
 #endif
 
-std::vector<rom_address_t> found_addresses;
-
 extern MicroBit uBit;
 
 OneWire::OneWire(PinName data_pin, PinName power_pin, bool power_polarity) : _datapin(data_pin),
@@ -27,6 +24,8 @@ OneWire::OneWire(PinName data_pin, PinName power_pin, bool power_polarity) : _da
 }
 
 void OneWire::init() {
+    found_addresses.clear();
+
     int byte_counter;
 
     for (byte_counter = 0; byte_counter < 9; byte_counter++)

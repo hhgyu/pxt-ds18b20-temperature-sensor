@@ -5,7 +5,7 @@ ds18b20.init(Pins.P0)
 let i = 0;
 basic.forever(() => {
     if(i > 10) {
-        ds18b20.deinit(Pins.P0)
+        //ds18b20.deinit(Pins.P0)
     }
 
     basic.showNumber(ds18b20.get_temp(Pins.P0))
