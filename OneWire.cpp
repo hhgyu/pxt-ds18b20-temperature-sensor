@@ -4,17 +4,7 @@
 #include <cstdlib>
 #include "OneWire.h"
 
-#ifdef MOCK_MICROBIT
-
-#include "MicroBitMocks.h"
-
-#else
-
-#include "MicroBit.h"
-
-#endif
-
-extern MicroBit uBit;
+#include "pxt.h"
 
 OneWire::OneWire(PinName data_pin, PinName power_pin, bool power_polarity) : _datapin(data_pin),
                                                                              _parasitepin(power_pin) {
@@ -158,7 +148,9 @@ bool OneWire::searchRomFindNext() {
     return_value = false;
     while (!DS1820_done_flag) {
         if (!onewire_reset()) {
-            uBit.serial.printf("Failed to reset one wire bus\n");
+#if 0
+            printf("Failed to reset one wire bus\n");
+#endif
             return false;
         } else {
             ROM_bit_index = 1;
@@ -172,7 +164,9 @@ bool OneWire::searchRomFindNext() {
                 if (Bit_A & Bit_B) {
                     descrepancyMarker = 0; // data read error, this should never happen
                     ROM_bit_index = 0xFF;
-                    uBit.serial.printf("Data read error - no devices on bus?\r\n");
+#if 0
+                    printf("Data read error - no devices on bus?\r\n");
+#endif
                 } else {
                     if (Bit_A | Bit_B) {
                         // Set ROM bit to Bit_A
@@ -215,7 +209,9 @@ bool OneWire::searchRomFindNext() {
                 while (1) {
                     if (i >= found_addresses.size()) {                             //End of list, or empty list
                         if (ROM_checksum_error(DS1820_search_ROM)) {          // Check the CRC
-                            uBit.serial.printf("failed crc\r\n");
+#if 0
+                            printf("failed crc\r\n");
+#endif
                             return false;
                         }
                         rom_address_t address;
@@ -424,7 +420,9 @@ float OneWire::temperature(rom_address_t &address, bool convertToFarenheight) {
                                   (count_per_degree - remaining_count) / count_per_degree);
                 break;
             default:
-                uBit.serial.printf("Unknown device family");
+#if 0
+                printf("Unknown device family");
+#endif
                 break;
         }
 

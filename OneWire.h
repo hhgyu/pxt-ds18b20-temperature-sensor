@@ -31,16 +31,6 @@
 #ifndef MICROBIT_ONEWIRE_H
 #define MICROBIT_ONEWIRE_H
 
-#ifdef MOCK_MICROBIT
-
-#include "MicroBitMocks.h"
-
-#else
-
-#include "MicroBit.h"
-
-#endif
-
 #include <vector>
 
 #define FAMILY_CODE address.rom[0]
@@ -67,24 +57,6 @@ struct rom_address_t {
 
 /**
  * OneWire with DS1820 Dallas 1-Wire Temperature Probe
- *
- * Example:
- * @code
- * #include "OneWire.h"
- *
- * OneWire oneWire(uBit.io.P12.name);
- *  
- * int main() {
- *     oneWire.init();
- *     rom_address_t address;
-       oneWire.singleDeviceReadROM(address);
- *     while(1) {
- *         oneWire.convertTemperature(address, true, true); //Start temperature conversion, wait until ready
- *         printf("It is %3.1foC\r\n", oneWire.temperature(address));
- *         wait(1);
- *     }
- * }
- * @endcode
  */
 class OneWire {
 public:
