@@ -144,8 +144,8 @@ public:
 private:
     std::vector<rom_address_t> found_addresses;
 
-    DigitalInOut _datapin;
-    DigitalOut _parasitepin;
+    mbed::DigitalInOut _datapin;
+    mbed::DigitalOut _parasitepin;
     bool _parasite_power;
     bool _power_mosfet;
     bool _power_polarity;
