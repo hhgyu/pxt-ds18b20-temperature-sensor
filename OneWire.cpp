@@ -5,6 +5,7 @@
 #include "OneWire.h"
 
 #include "pxt.h"
+using namespace pxt;
 
 OneWire::OneWire(PinName data_pin, PinName power_pin, bool power_polarity) : _datapin(data_pin),
                                                                              _parasitepin(power_pin) {
