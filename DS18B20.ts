@@ -23,7 +23,7 @@ namespace ds18b20 {
     //% blockId="ds18b20_init" block="connect temperature probe to %pin"
     //% shim=DS18B20::init
     export function init(pin: Pins): void {
-
+	return;
     }
 
     /**
@@ -38,7 +38,7 @@ namespace ds18b20 {
     //% blockId="ds18b20_deinit" block="deinit temperature probe to %pin" shim=DS18B20::deinit
     //% shim=DS18B20::deinit
     export function deinit(pin: Pins): void {
-
+	return;
     }
 }
 
